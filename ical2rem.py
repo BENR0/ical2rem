@@ -46,7 +46,7 @@ outFile = results.remind_file # "test.remind"
 # %%  A literal '%' character.
 
 def rem(start, end, title, rrule = None):
-    duration = str(end - start)
+    duration = str(end - start)[0:4]
     if rrule is None:
         # whole single day events
         # print("REM {} +{} {} MSG {} %b %".format(start.strftime("%b %d"), leadtime, start.strftime("%Y"), title))
@@ -55,7 +55,7 @@ def rem(start, end, title, rrule = None):
     else:
         # weekly recuring event at specific time with duration
         # print("REM {} AT {} +{} DURATION {} MSG {} %".format(start.strftime("%a"), start.strftime("%H:%M"), leadtime, duration, title))
-        return "REM {} AT {} +{} DURATION {} MSG {} %".format(start.strftime("%a"), start.strftime("%H:%M"), leadtime, duration, title)
+        return "REM {} AT {} +{} DURATION {} MSG {} %b %".format(start.strftime("%a"), start.strftime("%H:%M"), leadtime, duration, title)
 
 
 #read ical file
